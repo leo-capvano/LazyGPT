@@ -18,5 +18,5 @@ llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
 
 
 def generate_response(user_input: str) -> str:
-    for chunk in  (prompt | llm).stream({"user_input": user_input}):
+    for chunk in (prompt | llm).stream({"user_input": user_input}):
         yield chunk
