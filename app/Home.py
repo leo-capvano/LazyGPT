@@ -1,6 +1,6 @@
 import streamlit as st
 
-from llm_svc import generate_response
+from service.llm_svc import generate_response
 
 st.title("LazyGPT")
 
@@ -10,9 +10,6 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
-# load all prompt templates here
-st.sidebar.write("ciao")
 
 if user_input := st.chat_input("Input a message"):
     st.chat_message("human").markdown(user_input)
