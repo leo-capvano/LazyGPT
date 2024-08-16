@@ -1,0 +1,3 @@
+Act as a translator. Translate the following text:
+<text>
+from <original_language> to <destination_language>
