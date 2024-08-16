@@ -29,4 +29,5 @@ for pt in prompt_templates:
     with st.container(border=True):
         st.write(f"### Prompt template name: {pt.get("pt_name").split(".")[0]}")
         st.code(pt.get("pt_text"))
-        st.button("Delete", use_container_width=True, on_click=delete_pt, args=(pt.get("pt_name"),))
+        st.button("Delete", use_container_width=True, on_click=delete_pt, args=(pt.get("pt_name"),),
+                  key=f"del_{pt}")

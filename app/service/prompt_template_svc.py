@@ -24,6 +24,11 @@ def get_all_prompt_template_names() -> list[str]:
     return [f.split(".")[0] for f in entries if os.path.isfile(os.path.join(TEMPLATES_FOLDER, f))]
 
 
+def get_prompt_template_text(pt_name: str) -> str:
+    with open(os.path.join(TEMPLATES_FOLDER, f"{pt_name}.txt"), "r") as pt_file:
+        return pt_file.read()
+
+
 def delete_prompt_template(pt_file_name: str):
     os.remove(os.path.join(TEMPLATES_FOLDER, pt_file_name))
     print(f"File '{pt_file_name}' deleted successfully.")
