@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lazy-gpt
+  labels:
+    app: lazy-gpt-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lazy-gpt-app
+  template:
+    metadata:
+      labels:
+        app: lazy-gpt-app
+    spec:
+      containers:
+        - name: lazy-gpt-app
+          image: leocapuano/lazy_gpt:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8501
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 100m
+              memory: 745Mi
+          envFrom:
+            - configMapRef:
+                name: lazygpt-configmap
