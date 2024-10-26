@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lazy-gpt-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: lazy-gpt-app
+  ports:
+    - name: lazy-gpt-port
+      protocol: TCP
+      port: 80
+      targetPort: 8501
