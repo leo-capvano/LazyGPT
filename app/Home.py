@@ -30,5 +30,5 @@ if user_input := st.chat_input("Input a message"):
     st.session_state.messages.append({"role": "human", "content": user_input})
 
     assistant_output_stream = generate_response(user_input=user_input)
-    st.chat_message("assistant").write_stream(assistant_output_stream)
-    st.session_state.messages.append({"role": "assistant", "content": assistant_output_stream})
+    assistant_output = st.chat_message("assistant").write_stream(assistant_output_stream)
+    st.session_state.messages.append({"role": "assistant", "content": assistant_output})
