@@ -23,7 +23,8 @@ ENV VIRTUAL_ENV=/home/appuser/venv
 RUN virtualenv ${VIRTUAL_ENV}
 RUN . ${VIRTUAL_ENV}/bin/activate && pip install -r app/requirements.txt
 
-EXPOSE 8501
+COPY --chown=appuser:appuser entrypoint.sh /home/appuser/entrypoint.sh
+RUN chmod +x /home/appuser/entrypoint.sh
 
-COPY entrypoint.sh /home/appuser
-ENTRYPOINT ["./entrypoint.sh"]
+EXPOSE 8501
+ENTRYPOINT ["/home/appuser/entrypoint.sh"]

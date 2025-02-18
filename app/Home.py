@@ -14,8 +14,8 @@ with st.container(border=True):
             edit_config(cfg_key="selected_pt_name", cfg_new_value=selected_pt_name)
             prompt_template_text = get_prompt_template_text(selected_pt_name)
             edit_config(cfg_key="selected_pt_text", cfg_new_value=prompt_template_text)
-    st.markdown(f"Selected prompt template -> {cfg.get("selected_pt_name")}")
-    st.code(f"{cfg.get("selected_pt_text")}", language="yaml")
+    st.markdown(f"""Selected prompt template -> {cfg.get("selected_pt_name")}""")
+    st.code(f"""{cfg.get("selected_pt_text")}""", language="yaml")
 
 st.title("LazyGPT")
 
@@ -25,7 +25,7 @@ if "messages" not in st.session_state:
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-if user_input := st.chat_input(f"Input a message"):
+if user_input := st.chat_input("Input a message"):
     st.chat_message("human").markdown(user_input)
     st.session_state.messages.append({"role": "human", "content": user_input})
 
