@@ -34,6 +34,11 @@ Starting the Application
 
 This command launches the LazyGPT interface in your default web browser.
 
+# Docker build & run
+1. Create a .env file containing your OPENAI_API_KEY
+2. Build and run Docker image
+> docker build -t lazygpt .
+> docker run -p 8501:8501 lazygpt
 
 # Managing Prompt Templates
 This section explains how to manage and use the prompt template catalog feature
